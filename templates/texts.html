@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Your Texts</h1>
+<form method="post" class="mb-4">
+  <div class="mb-3">
+    <textarea name="text" class="form-control" rows="3" placeholder="Enter text"></textarea>
+  </div>
+  <div class="mb-3">
+    <input name="lang" class="form-control" placeholder="language code">
+  </div>
+  <button class="btn btn-primary" type="submit">Add Text</button>
+  <a class="btn btn-secondary" href="{{ url_for('suggest') }}">Suggest Text</a>
+</form>
+<ul class="list-group">
+  {% for t in texts %}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <a href="{{ url_for('edit_text', text_id=t.id) }}">{{ t.text[:30] }}{% if t.text|length > 30 %}...{% endif %}</a>
+    {% set done, total = progress[t.id] %}
+    <span>{{ done }}/{{ total }}</span>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

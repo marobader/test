@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Suggested Texts</h1>
+<ul class="list-group">
+  {% for text, coverage in suggestions %}
+  <li class="list-group-item">
+    <div>{{ text }} - {{ (coverage*100)|round(0) }}% known</div>
+    <form method="post" action="{{ url_for('add_suggested') }}">
+      <input type="hidden" name="text" value="{{ text }}">
+      <input type="hidden" name="lang" value="{{ lang }}">
+      <button class="btn btn-sm btn-primary mt-1" type="submit">Add</button>
+    </form>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
