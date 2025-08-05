@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <body>
+    <h1>Birkenbihl Learning App</h1>
+    <form method="post">
+      <textarea name="text" rows="5" cols="40" placeholder="Enter text"></textarea><br>
+      <input name="lang" placeholder="language code"><br>
+      <button type="submit">Add Text</button>
+    </form>
+    <h2>Vocabulary</h2>
+    <ul>
+      {% for word, data in vocab.items() %}
+        <li>{{ word }} - {{ data.translation or '' }} ({{ data.transliteration }})</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
