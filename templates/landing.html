@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center">
+  <h1>Welcome to the Birkenbihl Learning App</h1>
+  <p>Learn languages with per-word translations and vocabulary training.</p>
+  {% if not session.get('user') %}
+  <a class="btn btn-primary" href="{{ url_for('login') }}">Get Started</a>
+  {% endif %}
+</div>
+{% endblock %}

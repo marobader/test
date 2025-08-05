@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Translate Words</h1>
+<form action="{{ url_for('translate') }}" method="post">
+  {% for line in tokens %}
+    <div class="mb-3">
+      {% for word in line %}
+        <div class="mb-2">
+          <strong>{{ word }}</strong> - {{ app.transliterations[word] }}<br>
+          <input class="form-control" type="text" name="{{ word }}" value="{{ app.vocab[word] or '' }}">
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+  <button class="btn btn-primary" type="submit">Save Translations</button>
+</form>
+{% endblock %}

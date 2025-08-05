@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Login</h2>
+<form method="post" class="mb-3">
+  <input class="form-control" name="username" placeholder="Enter username">
+  <button class="btn btn-primary mt-2" type="submit">Login</button>
+</form>
+<p>Or login with <a href="{{ url_for('google.login') }}">Google</a></p>
+{% endblock %}
