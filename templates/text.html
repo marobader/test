@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>New Text</h1>
+<form method="post">
+  <div class="mb-3">
+    <textarea name="text" class="form-control" rows="5" placeholder="Enter text"></textarea>
+  </div>
+  <div class="mb-3">
+    <input name="lang" class="form-control" placeholder="language code">
+  </div>
+  <button class="btn btn-primary" type="submit">Add Text</button>
+</form>
+{% endblock %}

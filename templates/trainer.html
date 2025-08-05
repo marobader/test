@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Trainer</h2>
+{% if word %}
+<p><strong>{{ word }}</strong></p>
+<div id="answer" class="d-none">{{ data.translation }} ({{ data.transliteration }})</div>
+<button class="btn btn-primary" onclick="document.getElementById('answer').classList.remove('d-none');">Show</button>
+{% else %}
+<p>No vocabulary yet.</p>
+{% endif %}
+{% endblock %}
