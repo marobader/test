@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Profile</h2>
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label">Learning language</label>
+    <input class="form-control" name="language" value="{{ settings.language if settings }}">
+  </div>
+  <button class="btn btn-primary" type="submit">Save</button>
+</form>
+{% endblock %}

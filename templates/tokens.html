@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Translate Words</h1>
+<div class="progress mb-3">
+  <div class="progress-bar" role="progressbar" style="width: {{ progress[2] }}%;" aria-valuenow="{{ progress[2] }}" aria-valuemin="0" aria-valuemax="100">{{ progress[0] }}/{{ progress[1] }}</div>
+</div>
+<form action="{{ url_for('translate', text_id=text_id) }}" method="post">
+  {% for line in tokens %}
+    <div class="mb-3">
+      {% for word in line %}
+        <div class="mb-2">
+          <strong>{{ word }}</strong> - {{ app.transliterations[word] }}<br>
+          <input class="form-control {{ statuses[word] }}" type="text" name="{{ word }}" value="{{ app.vocab[word] or '' }}">
+          <a class="btn btn-sm btn-secondary mt-1" href="{{ url_for('hint', text_id=text_id, word=word) }}">Hint</a>
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+  <button class="btn btn-primary" type="submit">Save Translations</button>
+</form>
+<style>
+.correct { background-color: #d4edda; }
+.almost { background-color: #fff3cd; }
+.wrong { background-color: #f8d7da; }
+</style>
+{% endblock %}
